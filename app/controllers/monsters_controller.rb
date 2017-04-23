@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MonstersController < ApplicationController
   before_action :set_monster, only: [:show, :update, :destroy]
 

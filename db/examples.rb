@@ -17,3 +17,24 @@
 #                password: 'abc123',
 #                password_confirmation: nil)
 # end
+
+Monster.create(
+  name: 'Ginger',
+  owner_id: 1
+)
+Monster.create(
+  name: 'Davis',
+  owner_id: 1
+)
+
+# t.references :owner, null: false
+# t.string :name, null: false
+# t.boolean :alive, null: false, default: true
+# t.integer :hunger, null: false
+# t.integer :mood, null: false
+# t.integer :cleanliness, null: false
+# t.datetime :last_fed
+# t.datetime :last_played
+# t.datetime :last_cleaned
+# t.datetime :born_on, null: false
+# t.timestamps
