@@ -48,6 +48,6 @@ class MonstersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def monster_params
-      params.require(:monster).permit(:name, :alive, :hunger, :mood, :cleanliness, :last_fed, :last_played, :last_cleaned, :born_on)
+      params.require(:monster).permit(:name, :alive, :hunger, :mood, :cleanliness, :last_fed, :last_played, :last_cleaned)
     end
 end
