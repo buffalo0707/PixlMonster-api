@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-class MonstersController < ApplicationController
+class MonstersController < ProtectedController
   before_action :set_monster, only: [:show, :update, :destroy]
 
   # GET /monsters
   def index
-    @monsters = Monster.all
+    @monsters = Monster.where('owner_id = :user', user: current_user.id)
 
     render json: @monsters
   end
@@ -17,7 +17,7 @@ class MonstersController < ApplicationController
 
   # POST /monsters
   def create
-    @monster = Monster.new(monster_params)
+    @monster = Monster.new(owner: current_user, name: monster_params[:name])
 
     if @monster.save
       render json: @monster, status: :created, location: @monster
@@ -48,6 +48,6 @@ class MonstersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def monster_params
-      params.require(:monster).permit(:name, :alive, :hunger, :mood, :cleanliness, :last_fed, :last_played, :last_cleaned)
+      params.require(:monster).permit(:name, :owner)
     end
 end
