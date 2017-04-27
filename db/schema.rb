@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20170423214545) do
   end
 
   create_table "monsters", force: :cascade do |t|
-    t.integer  "owner_id",                    null: false
+    t.integer  "user_id",                     null: false
     t.string   "name",                        null: false
     t.boolean  "alive",        default: true, null: false
     t.integer  "hunger",       default: 5,    null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20170423214545) do
     t.datetime "last_cleaned"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.index ["owner_id"], name: "index_monsters_on_owner_id", using: :btree
+    t.index ["user_id"], name: "index_monsters_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

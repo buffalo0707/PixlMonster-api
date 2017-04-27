@@ -5,7 +5,7 @@ class MonstersController < ProtectedController
 
   # GET /monsters
   def index
-    @monsters = Monster.where('owner_id = :user', user: current_user.id)
+    @monsters = current_user.monsters
       # @monsters = Monster.all
 
     render json: @monsters
@@ -18,7 +18,7 @@ class MonstersController < ProtectedController
 
   # POST /monsters
   def create
-    @monster = Monster.new(owner: current_user, name: monster_params[:name])
+    @monster = current_user.monsters.build(monster_params)
 
     if @monster.save
       render json: @monster, status: :created, location: @monster
@@ -49,6 +49,6 @@ class MonstersController < ProtectedController
 
     # Only allow a trusted parameter "white list" through.
     def monster_params
-      params.require(:monster).permit(:name, :owner, :hunger)
+      params.require(:monster).permit(:name, :hunger)
     end
 end

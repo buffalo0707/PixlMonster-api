@@ -1,7 +1,7 @@
 class CreateMonsters < ActiveRecord::Migration[5.0]
   def change
     create_table :monsters do |t|
-      t.references :owner, null: false
+      t.references :user, null: false
       t.string :name, null: false
       t.boolean :alive, null: false, default: true
       t.integer :hunger, null: false, default: 5

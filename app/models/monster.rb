@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Monster < ApplicationRecord
-  belongs_to :owner, class_name: 'User'
+  belongs_to :user
 
-  validates :owner, presence: true
+  validates :user, presence: true
 end
