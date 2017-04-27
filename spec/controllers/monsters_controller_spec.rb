@@ -52,21 +52,6 @@ RSpec.describe MonstersController, type: :controller do
     end
   end
 
-  describe "GET #new" do
-    it "assigns a new monster as @monster" do
-      get :new, params: {}, session: valid_session
-      expect(assigns(:monster)).to be_a_new(Monster)
-    end
-  end
-
-  describe "GET #edit" do
-    it "assigns the requested monster as @monster" do
-      monster = Monster.create! valid_attributes
-      get :edit, params: {id: monster.to_param}, session: valid_session
-      expect(assigns(:monster)).to eq(monster)
-    end
-  end
-
   describe "POST #create" do
     context "with valid params" do
       it "creates a new Monster" do

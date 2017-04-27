@@ -6,6 +6,7 @@ class MonstersController < ProtectedController
   # GET /monsters
   def index
     @monsters = Monster.where('owner_id = :user', user: current_user.id)
+      # @monsters = Monster.all
 
     render json: @monsters
   end
@@ -48,6 +49,6 @@ class MonstersController < ProtectedController
 
     # Only allow a trusted parameter "white list" through.
     def monster_params
-      params.require(:monster).permit(:name, :owner)
+      params.require(:monster).permit(:name, :owner, :hunger)
     end
 end

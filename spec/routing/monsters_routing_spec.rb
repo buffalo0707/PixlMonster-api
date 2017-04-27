@@ -7,16 +7,8 @@ RSpec.describe MonstersController, type: :routing do
       expect(:get => "/monsters").to route_to("monsters#index")
     end
 
-    it "routes to #new" do
-      expect(:get => "/monsters/new").to route_to("monsters#new")
-    end
-
     it "routes to #show" do
       expect(:get => "/monsters/1").to route_to("monsters#show", :id => "1")
-    end
-
-    it "routes to #edit" do
-      expect(:get => "/monsters/1/edit").to route_to("monsters#edit", :id => "1")
     end
 
     it "routes to #create" do
