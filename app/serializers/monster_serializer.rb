@@ -1,3 +1,3 @@
 class MonsterSerializer < ActiveModel::Serializer
-  attributes :id, :name, :alive, :hunger, :mood, :cleanliness, :created_at
+  attributes :id, :name, :alive, :hunger, :mood, :cleanliness, :type, :created_at
 end
