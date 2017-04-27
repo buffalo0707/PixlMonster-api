@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170423214545) do
+ActiveRecord::Schema.define(version: 20170427195123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,17 +24,15 @@ ActiveRecord::Schema.define(version: 20170423214545) do
   end
 
   create_table "monsters", force: :cascade do |t|
-    t.integer  "user_id",                     null: false
-    t.string   "name",                        null: false
-    t.boolean  "alive",        default: true, null: false
-    t.integer  "hunger",       default: 5,    null: false
-    t.integer  "mood",         default: 5,    null: false
-    t.integer  "cleanliness",  default: 5,    null: false
-    t.datetime "last_fed"
-    t.datetime "last_played"
-    t.datetime "last_cleaned"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "user_id",                    null: false
+    t.string   "name",                       null: false
+    t.boolean  "alive",       default: true, null: false
+    t.integer  "hunger",      default: 5,    null: false
+    t.integer  "mood",        default: 5,    null: false
+    t.integer  "cleanliness", default: 5,    null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "type"
     t.index ["user_id"], name: "index_monsters_on_user_id", using: :btree
   end
 
