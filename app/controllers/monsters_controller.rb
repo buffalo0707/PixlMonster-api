@@ -3,6 +3,7 @@
 class MonstersController < ProtectedController
   before_action :set_monster, only: [:show, :update, :destroy]
 
+
   # GET /monsters
   def index
     @monsters = current_user.monsters
@@ -50,5 +51,9 @@ class MonstersController < ProtectedController
     # Only allow a trusted parameter "white list" through.
     def monster_params
       params.require(:monster).permit(:name, :hunger, :mood, :cleanliness)
+    end
+
+    def updateLastPlayed
+      puts "PLAYING!!!"
     end
 end
