@@ -30,7 +30,9 @@ class MonstersController < ProtectedController
 
   # PATCH/PUT /monsters/1
   def update
-    if @monster.update(monster_params)
+    @monster.assign_attributes(monster_params)
+    @monster[:hunger].zero? && @monster[:alive] = false
+    if @monster.save
       render json: @monster
     else
       render json: @monster.errors, status: :unprocessable_entity
@@ -43,17 +45,15 @@ class MonstersController < ProtectedController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_monster
-      @monster = Monster.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def monster_params
-      params.require(:monster).permit(:name, :type, :hunger, :mood, :cleanliness)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_monster
+    @monster = current_user.monsters.find(params[:id])
+  end
 
-    def updateLastPlayed
-      puts "PLAYING!!!"
-    end
+  # Only allow a trusted parameter "white list" through.
+  def monster_params
+    params.require(:monster).permit(:name, :type, :hunger, :mood, :cleanliness)
+  end
+
 end

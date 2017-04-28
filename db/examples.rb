@@ -20,11 +20,10 @@
 
 Monster.create(
   name: 'Ginger',
-  owner_id: 1
+  hunger: 0
 )
 Monster.create(
   name: 'Davis',
-  owner_id: 1
 )
 
 # t.references :owner, null: false
