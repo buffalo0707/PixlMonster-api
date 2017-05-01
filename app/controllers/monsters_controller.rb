@@ -32,6 +32,11 @@ class MonstersController < ProtectedController
   def update
     @monster.assign_attributes(monster_params)
     @monster[:hunger].zero? && @monster[:status] = 'dead'
+    @monster[:mood] = if @monster[:hunger] > 2 && @monster[:cleanliness] > 2
+                        'happy'
+                      else
+                        'sad'
+                      end
     if @monster.save
       render json: @monster
     else
