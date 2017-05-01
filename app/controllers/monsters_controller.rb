@@ -31,7 +31,7 @@ class MonstersController < ProtectedController
   # PATCH/PUT /monsters/1
   def update
     @monster.assign_attributes(monster_params)
-    @monster[:hunger].zero? && @monster[:alive] = false
+    @monster[:hunger].zero? && @monster[:status] = 'dead'
     if @monster.save
       render json: @monster
     else
