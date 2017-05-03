@@ -4,6 +4,10 @@
 
 This Ruby on Rails API is designed for use with the PixlMonstr client
 
+# URLs
+Front-End Repo: https://github.com/buffalo0707/PixlMonstr-Client
+
+Back-End Deploy: https://fierce-brook-20545.herokuapp.com/
 
 # Data Model
 
